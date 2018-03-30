@@ -26,7 +26,7 @@ fi
 
 # Get Redirect URL using Bearer Auth
 URL=https://ci.appveyor.com/api/projects/$PROJECT/$REPO/artifacts/$ARTIFACT?branch=$BRANCH
-echo "curl -X GET -I -H Authorization: Bearer $AUTHTOKEN $URL"
+echo "curl -X GET -I -H 'Authorization: Bearer $AUTHTOKEN' $URL"
 ARRAY=($(curl -X GET -I -H "Authorization: Bearer $AUTHTOKEN" $URL 2>/dev/null | grep Location: | tr " " "\n"))
 NEWURL=$(echo ${ARRAY[1]} | tr '' ' ')
 
@@ -37,6 +37,7 @@ fi
 
 # Remove any Windows CR line endings
 NEWURL=${NEWURL%$'\r'}
+echo "curl -o $OUTPUT $NEWURL"
 
 # Download file
 curl -o $OUTPUT $NEWURL
