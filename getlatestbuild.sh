@@ -20,7 +20,17 @@ for i in "$@"; do
 done
 
 if [[ -z "$AUTHTOKEN" ]]; then
-    echo "Token argument is required"
+    echo "--token argument is required"
+    exit -1
+fi
+
+if [[ -z "$PROJECT" ]]; then
+    echo "--project argument is required"
+    exit -1
+fi
+
+if [[ -z "$REPO" ]]; then
+    echo "--repo argument is required"
     exit -1
 fi
 
