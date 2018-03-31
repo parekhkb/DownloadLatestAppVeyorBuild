@@ -47,7 +47,7 @@ fi
 
 # Remove any Windows CR line endings
 NEWURL=${NEWURL%$'\r'}
-echo "curl -o $OUTPUT $NEWURL"
 
 # Download file
+echo "curl -o $OUTPUT $NEWURL"
 curl -o $OUTPUT $NEWURL
